@@ -3,6 +3,7 @@ import logo from "../../assets/logo.svg";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import { Map, TileLayer, Marker } from "react-leaflet";
 
 const CreatePoint: React.FC = () => {
   return (
@@ -48,10 +49,17 @@ const CreatePoint: React.FC = () => {
         <fieldset>
           <legend>
             <h2>Endereço</h2>
-            <span>
-              Selecione o endereço no mapa
-            </span>
+            <span>Selecione o endereço no mapa</span>
           </legend>
+
+          <Map center={[-23.6946789, -46.6995227]} zoom={15}>
+            <TileLayer
+              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            <Marker position={[-23.6946789, -46.6995227]}/>
+          </Map>
           <div className="field-group">
             <div className="field">
               <label htmlFor="uf">Estado (UF)</label>
@@ -72,9 +80,7 @@ const CreatePoint: React.FC = () => {
         <fieldset>
           <legend>
             <h2>Itens de coleta</h2>
-            <span>
-              Selecione um ou mais itens abaixo
-            </span>
+            <span>Selecione um ou mais itens abaixo</span>
           </legend>
           <ul className="items-grid">
             <li>
@@ -104,9 +110,7 @@ const CreatePoint: React.FC = () => {
           </ul>
         </fieldset>
 
-        <button type="submit">
-          Cadastrar ponto de coleta
-        </button>
+        <button type="submit">Cadastrar ponto de coleta</button>
       </form>
     </div>
   );
